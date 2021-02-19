@@ -14,7 +14,7 @@ This contains all my progress to date and serves as a reference for me when maki
 
 Not using much of this in here, however the orchlab french horn uses more of it. Using the event listeners directly on divs in that way is quite nice, however I did find it all a bit clunky and uninspiring for designing things.
 
-Adding `<span class="clear"></span> keeps the menus formatted correctly.`
+Adding `<span class="clear"></span>` keeps the menus formatted correctly.
 
 Putting the Javasccript within a div is a good idea. It allows for a lot more flexibility particularly with using p5.js with vamilla JavaScript for a better touch and mouse experience (and code that can easily port to another graphics libray).
 
@@ -24,13 +24,17 @@ The JavaScript script needs to be referenced within the body if you want to be a
 
 A really big one is that to dynamically change the size of a p5.js sketch, the best way I have learned so far is to do it in CSS. When I change it in JS it doesn't always match the other DOM elements in unpredictable ways.
 
-    #mycanvas {  /* dynamically change the p5 canvas to always fill the parent div width.  The width of the canvas from p5 is dynamically created, meaning that it gets applied at element level. There is no way of overriding that with specificity, so you need to raise a declaration as !important: */
+Dynamically change the p5 canvas to always fill the parent div width.  The width of the canvas from p5 is dynamically created, meaning that it gets applied at element level. There is no way of overriding that with specificity, so you need to raise a declaration as `!important:`.
+
+    #mycanvas {
     float: left;
     width: 100% !important;
     height: 100% !important;
     }
 
-    #p5parent { /* then you have to place the canvas within a parent div which has the correct attributes to dynamically create the right dimensions */
+Then you have to place the canvas within a parent div which has the correct attributes to dynamically create the right dimensions.
+
+    #p5parent {
     float: left;
     height: 100%;
     width: 100%;
