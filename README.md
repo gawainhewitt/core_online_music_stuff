@@ -70,6 +70,6 @@ I'm also using the CSS to do media queries and change display depending on scree
         }
     }
 
-For the select boxes there is a lot of CSS which comes from a tutorial on [w3schools.com] (https://www.w3schools.com/howto/howto_custom_select.asp).
+For the select boxes there is a lot of CSS which comes from a tutorial on [w3schools.com](https://www.w3schools.com/howto/howto_custom_select.asp).
 
 # JavaScript
