@@ -18,7 +18,7 @@ Adding `<span class="clear"></span>` keeps the menus formatted correctly.
 
 Putting the Javasccript within a div is a good idea. It allows for a lot more flexibility particularly with using p5.js with vamilla JavaScript for a better touch and mouse experience (and code that can easily port to another graphics libray).
 
-The JavaScript script needs to be referenced within the body if you want to be able to interact between HTML and JS,
+The JavaScript script needs to be referenced within the body if you want to be able to interact between HTML and JS.
 
 # CSS
 
@@ -49,7 +49,6 @@ I'm also using the CSS to do media queries and change display depending on scree
         display: block;
         margin-left: auto;
         margin-right: auto;
-        /* border: 5px solid red; */
     }
     }
 
@@ -59,7 +58,6 @@ I'm also using the CSS to do media queries and change display depending on scree
         display: block;
         margin-left: auto;
         margin-right: auto;
-        /* border: 5px solid blue; */
     }
     }
 
@@ -69,6 +67,9 @@ I'm also using the CSS to do media queries and change display depending on scree
         display: block;
         margin-left: auto;
         margin-right: auto;
-        /* border: 5px solid yellow; */
         }
     }
+
+For the select boxes there is a lot of CSS which comes from a tutorial on [w3schools.com] (https://www.w3schools.com/howto/howto_custom_select.asp).
+
+# JavaScript
