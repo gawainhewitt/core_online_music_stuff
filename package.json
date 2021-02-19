@@ -1,0 +1,20 @@
+{
+  "name": "core_online_music_stuff",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sketch.js",
+  "scripts": {
+    "build": "rm -rf ./dist/* && mkdir ./dist/css && cp ./index.html ./dist/index.html && cp ./css/main.css ./dist/css/main.css && cp ./sketch.js ./dist/sketch.js && cp ./p5.min.js ./dist/p5.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gawainhewitt/core_online_music_stuff.git"
+  },
+  "keywords": [],
+  "author": "Gawain Hewitt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gawainhewitt/core_online_music_stuff/issues"
+  },
+  "homepage": "https://github.com/gawainhewitt/core_online_music_stuff#readme"
+}
