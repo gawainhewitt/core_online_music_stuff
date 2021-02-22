@@ -179,7 +179,7 @@ You can set the parameters at creation or afterwards. In the [examples](https://
       }
     }).toDestination();
 
-So this sets up a sampler. urls for each sample mapped to a key, base url is where the samples are. Onload you can trigger a callback (perhaps "loaded").
+So this sets up a sampler. Urls for each sample mapped to a key, base url is where the samples are. Onload you can trigger a callback (perhaps "loaded").
 
 It appears that the attack is not very effective on the sampler – can’t seem to get much difference on different settings. Release however working well as such:
 
