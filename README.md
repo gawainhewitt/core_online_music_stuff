@@ -73,3 +73,5 @@ I'm also using the CSS to do media queries and change display depending on scree
 For the select boxes there is a lot of CSS which comes from a tutorial on [w3schools.com](https://www.w3schools.com/howto/howto_custom_select.asp).
 
 # JavaScript
+
+I haven't used it in this project, but you can declare a whole stack of variables at once with let in one statement. I'm still getting my head around let, var etc. so more soon! For example I just read that var can create a property on a global object, while let can't. Will need to investigate this further.

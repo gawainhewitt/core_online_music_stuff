@@ -1,11 +1,7 @@
-//turn this into a baseline template before continuing
-
-
 // sizing and resizing dynamically is happening in css #mycanvas and #parentdiv - overrides what's happening in here
 
 
 let numberOfButtons = 7;// automatically generate circular synth based on this
-
 
 let endedTouches = []; // array to store ended touches in
 let buttonPositions = []; // position to draw the buttons
