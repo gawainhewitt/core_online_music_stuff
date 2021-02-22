@@ -179,19 +179,9 @@ You can set the parameters at creation or afterwards. In the [examples](https://
       }
     }).toDestination();
 
-So this sets up a sampler
+So this sets up a sampler. urls for each sample mapped to a key, base url is where the samples are. Onload you can trigger a callback (perhaps "loaded").
 
-urls for each sample mapped to a key
-
-base url is where the samples are
-
-onload you can trigger a callback
-
-to destination for sound.
-
-It appears that the attack is not very effective on the sampler – can’t seem to get much difference on different settings
-
-release however working well as such:
+It appears that the attack is not very effective on the sampler – can’t seem to get much difference on different settings. Release however working well as such:
 
     const sampler = new Tone.Sampler({
       urls: {
@@ -205,7 +195,7 @@ release however working well as such:
       release: 10
     }).toDestination();
 
-    also works setting up like this
+Also works setting up like this
 
     sampler.set({
       release: 10
@@ -215,23 +205,23 @@ Playing function example:
 
     function playSynth(i) {
       synth.triggerAttack(notes[i], Tone.now());
-      document.getElementById(`i${i}`).style.backgroundColor="magenta";
     }
 
 
     function stopSynth(i) {
       synth.triggerRelease(notes[i], Tone.now());
-      document.getElementById(`i${i}`).style.backgroundColor=col[i];
     }
 
 ##### effects
 
-const reverb = new Tone.Reverb({
-  decay: 10, - // I think these need to be between 0 and 1 actually///
-  predelay: 2, // I think these need to be between 0 and 1 actually///
-  wet: 2 // I think these need to be between 0 and 1 actually///
-}).toDestination();
+    const reverb = new Tone.Reverb({
+      decay: 10, - // I think these need to be between 0 and 1 actually///
+      predelay: 2, // I think these need to be between 0 and 1 actually///
+      wet: 2 // I think these need to be between 0 and 1 actually///
+    }).toDestination();
 
-sampler.connect(reverb);
+So then you patch the sound source into the effect, which is already connected to the destination.
 
-Although I have found the performance to be variable...
+    sampler.connect(reverb);
+
+With effects I have found the performance to be variable...
