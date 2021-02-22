@@ -2,7 +2,7 @@
 
 Hi my name is [Gawain](http://gawainhewitt.co.uk/) and I make music and art. I also code.
 
-This contains all my progress to date and serves as a reference for me when making online interactive music and art projects. At the time of writing this project contains what I've learned about the following:
+This contains all my progress to date as I learn to make online work and serves as a reference for me when making online interactive music and art projects. At the time of writing this project contains what I've learned about the following:
 
 * HTML
 * CSS
