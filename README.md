@@ -98,3 +98,23 @@ You can add event listeners to the entire document or to individual items in the
 `el.addEventListener("touchstart", handleStart, false);` I also assign the vanilla JS event listeners to the DIV containing the canvas.
 
 `offset = el.getBoundingClientRect();`  get the size and position of the p5parent div so i can use offset.top to work out where touch and mouse actually need to be allowing for the othe elements in the DOM.
+
+    for (let i = 0; i < numberOfButtons; i++) {
+    mouseState.push(0);
+    }
+
+I've started trying to code in a more dynamic way - so that changing a single variable changes many things. Sometimes I need to use an array to store the state of things, and this is an example of how to fill this with default values in this case.
+
+# P5.js
+
+AT the time of writing I am only using p5 for drawing and potentially for animation.
+
+Giving the canvas an id and placing it in a parent DIV is important so it can be targetted for CSS styling, positioning in the DOM and event listeners etc being added to it.
+
+I have stopped using the sound library as I found it to be slow and unreliable.
+
+I have stopped using the p5 touch functions as they are incomplete, so I'm using vanilla JS ones instead.
+
+As a consequence of not using the p5 touch, I have also stopped using the p5 mouse functions too, otherwise touch and mouse interfere with each other.
+
+`colorMode(HSB, 5);` HSB colour is new to me, but I think I like it! It appears to be much easier to understand as it maps the colours around a circle. So the first value is hue, the second saturation, and the third brightness. In this case by assigning the second parameter to the number 5, the entire range is reduced to five, and divided by five. So instead of having a number between 0 and 360 to pick a hue, I have a number between 0 and 5. In this case if I was to use the number 3 it would be the equivelent of (360/5) * 3. This allows for a simple automation of colours split equally around the colour wheel. I've assigned this parameter to a variable in my code.
