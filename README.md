@@ -214,7 +214,7 @@ Playing function example:
       synth.triggerRelease(notes[i], Tone.now());
     }
 
-##### effects
+##### Effects
 
     const reverb = new Tone.Reverb({
       decay: 10, - // I think these need to be between 0 and 1 actually///
