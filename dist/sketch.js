@@ -1,3 +1,5 @@
+// in future add ability to dynamically assign keys
+
 // sizing and resizing dynamically is happening in css #mycanvas and #parentdiv - overrides what's happening in here
 
 
