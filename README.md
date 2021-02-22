@@ -115,7 +115,7 @@ I've started trying to code in a more dynamic way - so that changing a single va
 
 It seems to me that .clientX and .clientY behave differently for touch and mouse - as in they give subtley different results. Using .clientX and .clientY for the touch and .offsetX and .offsetY for the mouse seems to have sorted this out. But one to keep and eye on and learn more about.
 
-Objects are cool, use them - this example saved tens of lines of code using switch before.
+Objects are cool, use them. One thing to remember is that objects are not indexed (like an array) so you can't rely on the keys being in any particuapr order. This example saved tens of lines of code using switch before.
 
     keyMap = {
     'KeyQ' : 0,
