@@ -72,6 +72,12 @@ I'm also using the CSS to do media queries and change display depending on scree
 
 For the select boxes there is a lot of CSS which comes from a tutorial on [w3schools.com](https://www.w3schools.com/howto/howto_custom_select.asp).
 
+For my reference the ~ in the following means "all siblings after this element". So any element with class checkmark after a .container:hover input element. https://www.w3.org/TR/selectors-4/#general-sibling-combinators
+
+    .container:hover input ~ .checkmark {
+    background-color: #ccc;
+    }
+
 # JavaScript
 
 I haven't used it in this project, but you can declare a whole stack of variables at once with let in one statement. I'm still getting my head around let, var etc. so more soon! For example I just read that var can create a property on a global object, while let can't. Will need to investigate this further.
@@ -105,6 +111,40 @@ You can add event listeners to the entire document or to individual items in the
 
 I've started trying to code in a more dynamic way - so that changing a single variable changes many things. Sometimes I need to use an array to store the state of things, and this is an example of how to fill this with default values in this case.
 
+It seems to me that .clientX and .clientY behave differently for touch and mouse - as in they give subtley different results. Using .clientX and .clientY for the touch and .offsetX and .offsetY for the mouse seems to have sorted this out. But one to keep and eye on and learn more about.
+
+Objects are cool, use them - this example saved tens of lines of code using switch before.
+
+    keyMap = {
+    'KeyQ' : 0,
+    'KeyW' : 1,
+    'KeyE' : 2,
+    'KeyR' : 3,
+    'KeyT' : 4,
+    'KeyY' : 5,
+    'KeyU' : 6,
+    'KeyI' : 7,
+    'KeyO' : 8
+    }
+
+    function handleKeyDown(e) {
+
+    let key = e.code;
+    console.log("keydown "+key); //debugging
+
+    if(soundOn){
+        if (key in keyMap) {
+        console.log(`this works ${keyMap[key]}`);
+        if(whichKey[keyMap[key]] === 0) {
+            whichKey[keyMap[key]] = 1;
+            handleMouseAndKeys();
+        }
+        }
+    }else{
+        startAudio();
+    }
+    }
+
 # P5.js
 
 AT the time of writing I am only using p5.js for drawing and potentially for animation.
@@ -125,7 +165,7 @@ You don't have to draw in the draw() function (which is called 60 times a second
 
 Tone.js is very powerful and has a lot of documentation, however still leaves a lot to be worked out. So it has been quite frustrating getting to grips with it.
 
-One thing to bear in mind is that on the whole Tone.js behaves as synthesis or audio, so sometimes when debugging it pays to think in that way too. I had a bug where notes were hanging and that was because it was playing a polysynth on every touch.
+One thing to bear in mind is that on the whole Tone.js behaves as synthesis or audio, so sometimes when debugging it pays to think in that way too. I had a bug where notes were hanging and that was because it was playing a polysynth on every touch, but not switching them off quick enough. A simple boolean array to check if that note was already playing sorted it out.
 
 You create a synth or other object by assigning it to a variable
 

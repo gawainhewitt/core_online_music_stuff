@@ -202,7 +202,7 @@ function handleMouseDown(e) {
   mouseClick = true;
   if(soundOn) {
     for (let i = 0; i < numberOfButtons; i++) { // for each button
-      let d = dist(e.offsetX, e.offsetY, buttonPositions[i].x, buttonPositions[i].y); // compare the mouse to the button position - offset for vertical position in DOM
+      let d = dist(e.offsetX, e.offsetY, buttonPositions[i].x, buttonPositions[i].y); // compare the mouse to the button position -
       if (d < radius) { // is the mouse where a button is?
         mouseState[i] = 1;
       }
@@ -375,84 +375,30 @@ function touchButton() { // function to handle the touch interface with the butt
   }
 }
 
+keyMap = {
+  'KeyQ' : 0,
+  'KeyW' : 1,
+  'KeyE' : 2,
+  'KeyR' : 3,
+  'KeyT' : 4,
+  'KeyY' : 5,
+  'KeyU' : 6,
+  'KeyI' : 7,
+  'KeyO' : 8
+}
+
 function handleKeyDown(e) {
 
-  var key = e.code;
+  let key = e.code;
   console.log("keydown "+key); //debugging
+
   if(soundOn){
-    switch(key) {  /// working here! - retriggering keys so remove the play synth and do a for loop on the array to play
-      case "KeyQ" :
-        if(whichKey[0] === 0) {
-          whichKey[0] = 1;
-          handleMouseAndKeys();
-          break;
-        } else {
-          break;
-        }
-      case "KeyW" :
-        if(whichKey[1] === 0) {
-          whichKey[1] = 1;
-          handleMouseAndKeys();
-          break;
-        } else {
-          break;
-        }
-      case "KeyE" :
-        if(whichKey[2] === 0) {
-          whichKey[2] = 1;
-          handleMouseAndKeys();
-          break;
-        } else {
-          break;
-        }
-      case "KeyR" :
-        if(whichKey[3] === 0) {
-          whichKey[3] = 1;
-          handleMouseAndKeys();
-          break;
-        } else {
-          break;
-        }
-      case "KeyT" :
-        if(whichKey[4] === 0) {
-          whichKey[4] = 1;
-          handleMouseAndKeys();
-          break;
-        } else {
-          break;
-        }
-      case "KeyY" :
-        if(whichKey[5] === 0) {
-          whichKey[5] = 1;
-          handleMouseAndKeys();
-          break;
-        } else {
-          break;
-        }
-      case "KeyU" :
-        if(whichKey[6] === 0) {
-          whichKey[6] = 1;
-          handleMouseAndKeys();
-          break;
-        } else {
-          break;
-        }
-      case "KeyI" :
-        if(whichKey[7] === 0) {
-          whichKey[7] = 1;
-          handleMouseAndKeys();
-          break;
-        } else {
-          break;
-        }
-      case "KeyO" :
-        if(whichKey[8] === 0) {
-          whichKey[8] = 1;
-          handleMouseAndKeys();
-          break;
-        } else {
-          break;
-        }
+    if (key in keyMap) {
+      console.log(`this works ${keyMap[key]}`);
+      if(whichKey[keyMap[key]] === 0) {
+        whichKey[keyMap[key]] = 1;
+        handleMouseAndKeys();
+      }
     }
   }else{
     startAudio();
@@ -462,43 +408,11 @@ function handleKeyDown(e) {
 function handleKeyUp(e) {
   var key = e.code;
   console.log("keyup "+key); //debugging
-  switch(key) {
-    case "KeyQ" :
-      whichKey[0] = 0;
-      handleMouseAndKeys();
-      break;
-    case "KeyW" :
-      whichKey[1] = 0;
-      handleMouseAndKeys();
-      break;
-    case "KeyE" :
-      whichKey[2] = 0;
-      handleMouseAndKeys();
-      break;
-    case "KeyR" :
-      whichKey[3] = 0;
-      handleMouseAndKeys();
-      break;
-    case "KeyT" :
-      whichKey[4] = 0;
-      handleMouseAndKeys();
-      break;
-    case "KeyY" :
-      whichKey[5] = 0;
-      handleMouseAndKeys();
-      break;
-    case "KeyU" :
-      whichKey[6] = 0;
-      handleMouseAndKeys();
-      break;
-    case "KeyI" :
-      whichKey[7] = 0;
-      handleMouseAndKeys();
-      break;
-    case "KeyO" :
-      whichKey[8] = 0;
-      handleMouseAndKeys();
-      break;
+
+  if (key in keyMap) {
+    console.log(`this works end ${keyMap[key]}`);
+    whichKey[keyMap[key]] = 0;
+    handleMouseAndKeys();
   }
 
 }
