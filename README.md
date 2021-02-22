@@ -83,12 +83,18 @@ You can add event listeners to the entire document or to individual items in the
 
 `element.getBoundingClientRect();`The returned value is a DOMRect object which is the smallest rectangle which contains the entire element, including its padding and border-width. The left, top, right, bottom, x, y, width, and height properties describe the position and size of the overall rectangle in pixels.
 
-`let masterLeft = divPos.left;` distance from left of screen to left edge of bounding box
-`let masterRight = divPos.right;` distance from left of screen to the right edge of bounding box
-`let cnvDimension = masterRight - masterLeft;` size of div -however in some cases this is wrong, so i am now using css !important to set the size and scaling, which also behaves more as I imagined - but have kept this to work out size of other elements if needed
+`let masterLeft = divPos.left;` distance from left of screen to left edge of bounding box.
 
-`cnv.id('mycanvas');`  assign id to the canvas so i can style it - this is where the css dynamic sizing is applied
+`let masterRight = divPos.right;` distance from left of screen to the right edge of bounding box.
+
+`let cnvDimension = masterRight - masterLeft;` size of div - however in some cases this is wrong, so i am now using CSS !important to set the size and scaling, which also behaves more as I imagined - but have kept this to work out size of other elements if needed.
+
+`cnv.id('mycanvas');`  assign id to the canvas so i can style it - this is where the css dynamic sizing is applied.
+
 `cnv.parent('p5parent');` put the canvas in a div with an id if needed so it can be placed on the screen using HTML - this DIV also needs to be sized correctly, and when you change this one, the one within will change to match it.
+
 `let el = document.getElementById("p5parent");`
+
 `el.addEventListener("touchstart", handleStart, false);` I also assign the vanilla JS event listeners to the DIV containing the canvas.
+
 `offset = el.getBoundingClientRect();`  get the size and position of the p5parent div so i can use offset.top to work out where touch and mouse actually need to be allowing for the othe elements in the DOM.
