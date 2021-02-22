@@ -125,6 +125,8 @@ You don't have to draw in the draw() function (which is called 60 times a second
 
 Tone.js is very powerful and has a lot of documentation, however still leaves a lot to be worked out. So it has been quite frustrating getting to grips with it.
 
+One thing to bear in mind is that on the whole Tone.js behaves as synthesis or audio, so sometimes when debugging it pays to think in that way too. I had a bug where notes were hanging and that was because it was playing a polysynth on every touch.
+
 You create a synth or other object by assigning it to a variable
 
     let synth = new Tone.PolySynth({
