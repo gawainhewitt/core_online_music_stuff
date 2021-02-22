@@ -14,7 +14,7 @@ let radius; // radius of the buttons
 let offset; // to store the difference between x and y readings once menus are taken into account
 let r; // radius of the circle around which the buttons will be drawn
 let angle = 0; // variable within which to store the angle of each button as we draw it
-let step;
+let step; // this will be calculated and determine the gap between each button around the circle
 let ongoingTouches = []; // array to copy the ongoing touch info into
 let notes = []; // notes for the synth in this example
 var allTheNotes =  ["C1", "C#1", "D1", "D#1", "E1", "F1", "F#1", "G1", "G#1", "A1", "A#1", "B1",
@@ -42,7 +42,7 @@ let mouseClick = false;
 
 
 function setup() {  // setup p5
-  step = TWO_PI/numberOfButtons; // in radians the equivalent of 360/6
+  step = TWO_PI/numberOfButtons; // in radians the equivalent of 360/6 - this will be used to draw the circles position
   console.log(`step = ${step}`);
   scale = pentatonic; // sets the default scale on load
 
@@ -53,7 +53,7 @@ function setup() {  // setup p5
   let divPos = masterDiv.getBoundingClientRect(); //The returned value is a DOMRect object which is the smallest rectangle which contains the entire element, including its padding and border-width. The left, top, right, bottom, x, y, width, and height properties describe the position and size of the overall rectangle in pixels.
   let masterLeft = divPos.left; // distance from left of screen to left edge of bounding box
   let masterRight = divPos.right; // distance from left of screen to the right edge of bounding box
-  let cnvDimension = masterRight - masterLeft; // size of div -however in some cases this is wrong, so i am now using css !important instead
+  let cnvDimension = masterRight - masterLeft; // size of div -however in some cases this is wrong, so i am now using css !important to set the size and sca;ing - but have kept this to work out size of other elements if needed
 
   console.log("canvas sixe = " + cnvDimension);
 
