@@ -83,7 +83,7 @@ function setup() {  // setup p5
   }
 
   welcomeScreen(); // initial screen for project - also allows an elegant place to put in the Tone.start() command.
-                    // I don't think that this technique will work if animating as the draw() function will instantly overide it
+                    // if animating put an if statement in the draw() function otherwise it will instantly overide it
   createButtonPositions(); // generate the default array info depending on number of buttons
 }
 
@@ -121,7 +121,9 @@ function createButtonPositions() {
   }
   console.log(notes);
   console.log("offset height = " + offset.top);
-  buttonPositions.reverse(); // reverse the array
+  buttonPositions.reverse(); // reverse the array because I want to draw the other way around
+
+  // the following is because I want the first button to be the bottom one, and otherwise the bottom one is the last
   let firstButton = buttonPositions.pop(); //remove last element from the array
   buttonPositions.unshift(firstButton); // and put it at the front
 

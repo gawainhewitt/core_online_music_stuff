@@ -107,7 +107,7 @@ I've started trying to code in a more dynamic way - so that changing a single va
 
 # P5.js
 
-AT the time of writing I am only using p5 for drawing and potentially for animation.
+AT the time of writing I am only using p5.js for drawing and potentially for animation.
 
 Giving the canvas an id and placing it in a parent DIV is important so it can be targetted for CSS styling, positioning in the DOM and event listeners etc being added to it.
 
@@ -118,3 +118,120 @@ I have stopped using the p5 touch functions as they are incomplete, so I'm using
 As a consequence of not using the p5 touch, I have also stopped using the p5 mouse functions too, otherwise touch and mouse interfere with each other.
 
 `colorMode(HSB, 5);` HSB colour is new to me, but I think I like it! It appears to be much easier to understand as it maps the colours around a circle. So the first value is hue, the second saturation, and the third brightness. In this case by assigning the second parameter to the number 5, the entire range is reduced to five, and divided by five. So instead of having a number between 0 and 360 to pick a hue, I have a number between 0 and 5. In this case if I was to use the number 3 it would be the equivelent of (360/5) * 3. This allows for a simple automation of colours split equally around the colour wheel. I've assigned this parameter to a variable in my code.
+
+You don't have to draw in the draw() function (which is called 60 times a second), you can just draw in normal functions and call them when you want to change something.
+
+# Tone.js
+
+Tone.js is very powerful and has a lot of documentation, however still leaves a lot to be worked out. So it has been quite frustrating getting to grips with it.
+
+You create a synth or other object by assigning it to a variable
+
+    let synth = new Tone.PolySynth({
+      "oscillator": {
+        type: 'sawtooth6'
+      }
+    }).toDestination(); // create a polysynth
+
+the `.toDestination();` plugs it in. This replaces `.toMaster();` and at the time of writing is a rare example of post-colonial name changing in pro audio and is to be applauded. You could assign the synth to a variable and then plug it in later.
+
+    let synth = new Tone.PolySynth({
+      "oscillator": {
+        type: 'sawtooth6'
+      }
+    });
+
+    synth.toDestination();
+
+You can set the parameters at creation or afterwards. In the [examples](https://tonejs.github.io/examples/polySynth) page of the Tone.js docs you can create and check these settings. There is typo in the documentation about polysynth, it's actually the first parameter that tells the polysynth which synth you want to base the polysynth on, and the second one allows you to set the oscillator and envelopes etc.
+
+    synth.set(  // setup the synth - this is audio stuff really
+        {
+          "volume": 0, //remember to allow for the cumalative effects of polyphony
+          "detune": 0,
+          "portamento": 0,
+          "envelope": {
+            "attack": 25,
+            "attackCurve": "linear",
+            "decay": 0,
+            "decayCurve": "exponential",
+            "sustain": 0.3,
+            "release": 5,
+            "releaseCurve": "exponential"
+          },
+        }
+      );
+
+`const now = Tone.now();` time variable to tell the tone.js when to play - i.e play now! (when function called for example)
+
+`sampler.volume.value = -20;` set volume
+
+##### Sampler
+
+    const sampler = new Tone.Sampler({
+      urls: {
+        B2: "horn-tone-b2.mp3",
+        F3: "horn-tone-f3.mp3",
+      },
+      baseUrl: "/sounds/",
+      onload: () => {
+        sampler.triggerAttackRelease(["C1", "E1", "G1", "B1"], 0.5);
+      }
+    }).toDestination();
+
+So this sets up a sampler
+
+urls for each sample mapped to a key
+
+base url is where the samples are
+
+onload you can trigger a callback
+
+to destination for sound.
+
+It appears that the attack is not very effective on the sampler – can’t seem to get much difference on different settings
+
+release however working well as such:
+
+    const sampler = new Tone.Sampler({
+      urls: {
+        B2: "horn-tone-b2.mp3",
+        F3: "horn-tone-f3.mp3",
+      },
+      baseUrl: "/sounds/",
+      onload: () => {
+        sampler.triggerAttackRelease(["C1", "E1", "G1", "B1"], 0.5);
+      },
+      release: 10
+    }).toDestination();
+
+    also works setting up like this
+
+    sampler.set({
+      release: 10
+    });
+
+Playing function example:
+
+    function playSynth(i) {
+      synth.triggerAttack(notes[i], Tone.now());
+      document.getElementById(`i${i}`).style.backgroundColor="magenta";
+    }
+
+
+    function stopSynth(i) {
+      synth.triggerRelease(notes[i], Tone.now());
+      document.getElementById(`i${i}`).style.backgroundColor=col[i];
+    }
+
+##### effects
+
+const reverb = new Tone.Reverb({
+  decay: 10, - // I think these need to be between 0 and 1 actually///
+  predelay: 2, // I think these need to be between 0 and 1 actually///
+  wet: 2 // I think these need to be between 0 and 1 actually///
+}).toDestination();
+
+sampler.connect(reverb);
+
+Although I have found the performance to be variable...
