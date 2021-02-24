@@ -168,7 +168,7 @@ function draw() {  // p5 draw function - the traditional way to do this in p5 - 
 function drawSynth() { // instead of using the draw function at 60 frames a second we will call this function when something changes
   background(1, 0, 4); // background is grey (remember 5 is maximum)
   for (let i = 0; i < numberOfButtons; i++) {
-    fill(buttonColour[i], 4, 4);
+    fill(buttonColour[i], (numberOfButtons/4)*3, (numberOfButtons/4)*3);
     ellipse(buttonPositions[i].x, buttonPositions[i].y, radius * 2);
   }
 }
