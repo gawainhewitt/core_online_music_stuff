@@ -85,7 +85,7 @@ function setup() {  // setup p5
   }
 
   if (window.DeviceOrientationEvent) {      // if device orientation changes we recalculate the offsetT variable
-    window.addEventListener("deviceorientation", handleOrientationEvent());
+    window.addEventListener("deviceorientation", handleOrientationEvent);
   }
 
   welcomeScreen(); // initial screen for project - also allows an elegant place to put in the Tone.start() command.
