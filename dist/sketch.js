@@ -338,6 +338,10 @@ return -1;    // not found
 
 function touchButton() { // function to handle the touch interface with the buttons
 
+  let el = document.getElementById("p5parent");
+  offsetT = el.getBoundingClientRect(); // get the size and position of the p5parent div so i can use offset top to work out where touch and mouse actually need to be
+
+
   let _touches = ongoingTouches; //assign the changedTouches to an array called touches
   let _buttonState = []; // array to store buttonstate in
 
