@@ -347,7 +347,7 @@ return -1;    // not found
 
 function touchButton() { // function to handle the touch interface with the buttons
 
-  let _touches = ongoingTouches; //assign the changedTouches to an array called touches
+  let _touches = TouchEvent.touches; //assign the changedTouches to an array called touches
   let _buttonState = []; // array to store buttonstate in
 
   for(let i = 0; i < numberOfButtons; i++) {
