@@ -259,14 +259,13 @@ function handleMouseAndKeys() {   // this function ensures only one "on" or "off
 }
 
 function handleStart(e) {
+  let _touches = e.changedTouches; //assign the changedTouches to an array called touches
   if(soundOn){
-    let _touches = e.changedTouches; //assign the changedTouches to an array called touches
     ongoingTouches.push(copyTouch(_touches[0])); //copy the new touch into the ongoingTouches array
     //console.log(ongoingTouches); // debugging
     touchButton(e);
   }else{
     startAudio();
-    let _touches = e.changedTouches; //assign the changedTouches to an array called touches
     ongoingTouches.push(copyTouch(_touches[0])); //copy the new touch into the ongoingTouches array
   }
   e.preventDefault(); // prevent default touch actions like scroll
