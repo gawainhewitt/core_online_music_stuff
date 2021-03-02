@@ -261,73 +261,73 @@ function handleMouseAndKeys() {   // this function ensures only one "on" or "off
 function handleStart(e) {
   if(soundOn){
     let _touches = e.changedTouches; //assign the changedTouches to an array called touches
-    ongoingTouches.push(copyTouch(_touches[0])); //copy the new touch into the ongoingTouches array
+    // ongoingTouches.push(copyTouch(_touches[0])); //copy the new touch into the ongoingTouches array
     //console.log(ongoingTouches); // debugging
     touchButton(e);
   }else{
     startAudio();
-    let _touches = e.changedTouches; //assign the changedTouches to an array called touches
-    ongoingTouches.push(copyTouch(_touches[0])); //copy the new touch into the ongoingTouches array
+    // let _touches = e.changedTouches; //assign the changedTouches to an array called touches
+    // ongoingTouches.push(copyTouch(_touches[0])); //copy the new touch into the ongoingTouches array
   }
   e.preventDefault(); // prevent default touch actions like scroll
 }
 
 function handleMove(e) {
-  let _touches = e.changedTouches; //assign the changedTouches to an array called touches
+  // let _touches = e.changedTouches; //assign the changedTouches to an array called touches
 
-  for (var i = 0; i < _touches.length; i++) {
-    var idx = ongoingTouchIndexById(_touches[i].identifier); //call a function that will compare this touch against the list and assign the return to idx
-    if (idx >= 0) { // did we get a match?
-      // console.log("continuing touch "+idx); // debugging
-    // console.log("index = " + idx);
-      ongoingTouches.splice(idx, 1, copyTouch(_touches[i]));  // swap in the new touch record
-      // console.log(".");
-    } else { // no match
-      console.log("can't figure out which touch to continue");
-    }
-  }
+  // for (var i = 0; i < _touches.length; i++) {
+  //   var idx = ongoingTouchIndexById(_touches[i].identifier); //call a function that will compare this touch against the list and assign the return to idx
+  //   if (idx >= 0) { // did we get a match?
+  //     // console.log("continuing touch "+idx); // debugging
+  //   // console.log("index = " + idx);
+  //     ongoingTouches.splice(idx, 1, copyTouch(_touches[i]));  // swap in the new touch record
+  //     // console.log(".");
+  //   } else { // no match
+  //     console.log("can't figure out which touch to continue");
+  //   }
+  // }
   touchButton(e);
   e.preventDefault(); // prevent default touch actions like scroll
 }
 
 function handleEnd(e) {
   e.preventDefault(); // prevent default touch actions like scroll
-  let _touches = e.changedTouches; //assign the changedTouches to an array called touches
+  // let _touches = e.changedTouches; //assign the changedTouches to an array called touches
 
-  for (var i = 0; i < _touches.length; i++) {
+  // for (var i = 0; i < _touches.length; i++) {
 
-    var idx = ongoingTouchIndexById(_touches[i].identifier); //call a function that will compare this touch against the list and assign the return to idx
+  //   var idx = ongoingTouchIndexById(_touches[i].identifier); //call a function that will compare this touch against the list and assign the return to idx
 
-    if (idx >= 0) { // did we get a match?
-      console.log("touchend "+idx);
-      ongoingTouches.splice(idx, 1);  // remove it; we're done
-    } else { // no match
-      console.log("can't figure out which touch to end");
-    }
-  }
+  //   if (idx >= 0) { // did we get a match?
+  //     console.log("touchend "+idx);
+  //     ongoingTouches.splice(idx, 1);  // remove it; we're done
+  //   } else { // no match
+  //     console.log("can't figure out which touch to end");
+  //   }
+  // }
   touchButton(e);
-    for (let t of e.changedTouches) { // cycle through the changedTouches array
-      // console.log("touch id " + t.identifier + // debugging
-      //   " released at x: " + t.clientX +
-      //   " y: " + t.clientY)
-      endedTouches.push({ //create our ended touches array of objects from which we can call .time, .id, .x, .y
-        time: millis(),
-        id: t.identifier,
-        x: t.clientX,
-        y: t.clientY
-      });
-    }
+    // for (let t of e.changedTouches) { // cycle through the changedTouches array
+    //   // console.log("touch id " + t.identifier + // debugging
+    //   //   " released at x: " + t.clientX +
+    //   //   " y: " + t.clientY)
+    //   endedTouches.push({ //create our ended touches array of objects from which we can call .time, .id, .x, .y
+    //     time: millis(),
+    //     id: t.identifier,
+    //     x: t.clientX,
+    //     y: t.clientY
+    //   });
+    // }
 }
 
 function handleCancel(e) { // this handles touchcancel
   e.preventDefault();  // prevent default touch actions like scroll
   console.log("touchcancel."); //debugging
-  var touches = e.changedTouches; //assign the changedTouches to an array called touches
+  // var touches = e.changedTouches; //assign the changedTouches to an array called touches
 
-  for (var i = 0; i < touches.length; i++) {
-    var idx = ongoingTouchIndexById(touches[i].identifier); //call a function that will compare this touch against the list and assign the return to idx
-    ongoingTouches.splice(idx, 1);  // remove it; we're done
-  }
+  // for (var i = 0; i < touches.length; i++) {
+  //   var idx = ongoingTouchIndexById(touches[i].identifier); //call a function that will compare this touch against the list and assign the return to idx
+  //   ongoingTouches.splice(idx, 1);  // remove it; we're done
+  // }
 }
 
 function copyTouch({ identifier, clientX, clientY }) { // this function is used to facilitate copying touch ID properties
